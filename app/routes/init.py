@@ -1,9 +1,7 @@
 from fastapi import APIRouter
-from .session import router as session_router
-from .verify import router as verify_router
-from .warmup import router as warmup_router
+from app.controllers import neonize_controller
+from app.routes import ws as ws_routes
 
-api = APIRouter()
-api.include_router(session_router)
-api.include_router(verify_router)
-api.include_router(warmup_router)
+router = APIRouter()
+router.include_router(neonize_controller.router)
+router.include_router(ws_routes.router)
